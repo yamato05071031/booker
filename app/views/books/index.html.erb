@@ -30,9 +30,11 @@
         </div>
 
 
-<% if flash.now[:error] %>
-  <p><%= flash.now[:error] %></p>
-  <p>error</p>
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>errors prohibited this book from being saved:
+  <% @book.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
 <% end %>
 
 <h2>New book</h2>
